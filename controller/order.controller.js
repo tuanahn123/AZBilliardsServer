@@ -19,10 +19,16 @@ class OrderController {
             metadata: await OrderService.acceptOrderMembership(req.param.id)
         }).send(res)
     }
-    static orderTable = async (req, res, next) => {
+    static orderDesk = async (req, res, next) => {
         new SuccessResponse({
             message: 'Đặt bàn thành công!',
-            metadata: await OrderService.orderTable(req.session.userId, req.body)
+            metadata: await OrderService.orderDesk(req.session.userId, req.body)
+        }).send(res)
+    }
+    static getAllOrderDesk = async (req, res, next) => {
+        new SuccessResponse({
+            message: 'Lấy danh sách thành công!',
+            metadata: await OrderService.getAllOrderDesk()
         }).send(res)
     }
 }

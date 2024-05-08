@@ -2,8 +2,60 @@ const db = require("../dbs/initDb")
 const { BadRequestError } = require("../responseHandle/error.response");
 const moment = require("moment-timezone")
 class OrderService {
+    static getAllOrderDesk = async () => {
+        const query = `
+        SELECT 
+        OrderDesk.*,
+        Desk.id AS desk_id, 
+        Desk.name AS desk_name,
+        Tool.id AS tool_id,
+        Tool.name AS tool_name,
+        User.id AS user_id,
+        User.fullname AS fullname
+    FROM 
+        OrderDesk
+    INNER JOIN 
+        Desk ON OrderDesk.desk_id = Desk.id
+    INNER JOIN 
+        Tool ON OrderDesk.tool_id = Tool.id
+    INNER JOIN 
+        User ON OrderDesk.user_id = User.id;
+    ;
+    `;
+        const checkResults = await new Promise((resolve, reject) => {
+            db.query(query, (checkError, results) => {
+                if (checkError) {
+                    reject(new BadRequestError(checkError.message));
+                    return;
+                }
+                resolve(results);
+            });
+        });
+        // Chuyển đổi kết quả thành mảng các đối tượng
+        const formattedResults = checkResults.map(row => ({
+            id: row.id,
+            desk: {
+                id: row.desk_id,
+                name: row.desk_name,
+            },
+            tool: {
+                id: row.tool_id,
+                name: row.tool_name,
+            },
+            start_date: row.start_date,
+            end_date: row.end_date,
+            combo: row.combo,
+            quantity_tool: row.quantity_tool,
+            user: {
+                id: row.user_id,
+                fullname: row.fullname,
+            }
+        }));
 
-    static orderTable = async (user_id, { desk_id, tool_id, start_date, end_date, combo, quantity_tool }) => {
+        return formattedResults
+
+    }
+    static orderDesk = async (user_id, { desk_id, tool_id, start_date, end_date, combo, quantity_tool }) => {
         const checkQuery = 'SELECT * FROM OrderDesk WHERE desk_id = ? AND ((start_date >= ? AND start_date < ?) OR (end_date > ? AND end_date <= ?))';
         const checkResults = await new Promise((resolve, reject) => {
             db.query(checkQuery, [desk_id, start_date, end_date, start_date, end_date], (checkError, results) => {

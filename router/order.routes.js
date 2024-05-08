@@ -6,9 +6,10 @@ const { checkRole } = require('../middleware/checkLogin')
 const router = express.Router()
 
 router.post('/membership', asyncHandle(OrderController.orderMembership))
-router.post('/desk', asyncHandle(OrderController.orderTable))
+router.post('/desk', asyncHandle(OrderController.orderDesk))
 router.use(checkRole)
 router.get('/membership', asyncHandle(OrderController.getListOrderMembership))
+router.get('/desk', asyncHandle(OrderController.getAllOrderDesk))
 router.post('/membership/accept/:id', asyncHandle(OrderController.acceptOrderMembership))
 
 module.exports = router
