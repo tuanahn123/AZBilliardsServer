@@ -19,6 +19,7 @@ app.use(session({
 }));
 // connect to mySQL
 require('./dbs/initDb')
+require('./dbs/importDb')
 //init router
 var indexRouter = require('./router/index.routes')
 

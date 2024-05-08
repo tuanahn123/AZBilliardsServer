@@ -8,6 +8,7 @@ const router = express.Router()
 
 router.get('/:id', asyncHandle(DeskController.getById))
 router.get('/', asyncHandle(DeskController.getAll))
+router.use(checkLogin)
 router.use(checkRole)
 router.post('/', asyncHandle(DeskController.create))
 router.post('/:id', asyncHandle(DeskController.update))
