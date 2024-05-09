@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Favicon -->
+    <!-- Google Fonts -->
+    <!--Reset CSS -->
+    <link rel="stylesheet" href="../universal/reset.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../universal/header.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div id="popup-background">
+        <div id="cue-menu">
+            <!-- item list menu -->
+            <div class="cue-menu-screen">
+                <div class="cue-menu-screen-info">
+                    <h2>Danh sách dụng cụ thuê thêm</h2>
+                    <div id="filter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" viewBox="0 0 39 43" fill="none">
+                            <path d="M19.5 26L2.6125 6.5L36.3875 6.5L19.5 26Z" fill="#676767"/>
+                            <path d="M15 7H25V33.3077L15 42.5V7Z" fill="#676767"/>
+                        </svg>
+                        <span>Lọc</span>
+
+                        <div id="filter-box">
+                            <div class="filter-category">
+                                <span class="filter-category-title">Giá</span>
+                                <div class="filter-content">
+                                    <label for="lower-price-point">Từ:</label><input id="lower-price-point" type="number">
+                                    <label for="higher-price-point">Đến:</label><input id="higher-price-point" type="number">
+                                </div>
+                            </div>
+
+                            <div class="filter-category">
+                                <span class="filter-category-title">Chất liệu</span>
+                                <div class="filter-content">
+                                    <input type="checkbox" name="" id="material1"><label for="material1">Chất liệu 1</label>
+                                    <input type="checkbox" name="" id="material2"><label for="material2">Chất liệu 2</label>
+                                </div>
+                            </div>
+
+                            <div class="filter-category">
+                                <span class="filter-category-title">Hãng</span>
+                                <div class="filter-content">
+                                    <input type="checkbox" name="" id="brand1"><label for="brand1">Hãng 1</label>
+                                    <input type="checkbox" name="" id="brand2"><label for="brand2">Hãng 2</label>
+                                    <input type="checkbox" name="" id="brand3"><label for="brand3">Hãng 3</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="selected-cues"><span>0</span></div>
+                </div>
+
+                <!-- cue list -->
+                <div id="cue-list-section">
+                    <!-- left btn -->
+                    <div id="left-btn" class="cue-list-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="27" viewBox="0 0 21 34" fill="none">
+                            <path d="M18 31L4 17L18 3" stroke="black" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- list -->
+                    <div id="cue-list">
+                        <div class="cue-list-item">
+                            <div class="cue-list-item-info">
+                                <h3>item name1</h3>
+                                <div class="cue-list-item-amount-segment">
+                                    <div class="rem-item-btn item-btn"><span>-</span></div>
+                                    <span class="list-item-amount">0</span>
+                                    <div class="add-item-btn item-btn"><span>+</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cue-list-item">
+                            <div class="cue-list-item-info">
+                                <h3>item name2</h3>
+                                <div class="cue-list-item-amount-segment">
+                                    <div class="rem-item-btn item-btn"><span>-</span></div>
+                                    <span class="list-item-amount">0</span>
+                                    <div class="add-item-btn item-btn"><span>+</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cue-list-item">
+                            <div class="cue-list-item-info">
+                                <h3>item name3</h3>
+                                <div class="cue-list-item-amount-segment">
+                                    <div class="rem-item-btn item-btn"><span>-</span></div>
+                                    <span class="list-item-amount">0</span>
+                                    <div class="add-item-btn item-btn"><span>+</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cue-list-item">
+                            <div class="cue-list-item-info">
+                                <h3>item name4</h3>
+                                <div class="cue-list-item-amount-segment">
+                                    <div class="rem-item-btn item-btn"><span>-</span></div>
+                                    <span class="list-item-amount">0</span>
+                                    <div class="add-item-btn item-btn"><span>+</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cue-list-item">
+                            <div class="cue-list-item-info">
+                                <h3>item name5</h3>
+                                <div class="cue-list-item-amount-segment">
+                                    <div class="rem-item-btn item-btn"><span>-</span></div>
+                                    <span class="list-item-amount">0</span>
+                                    <div class="add-item-btn item-btn"><span>+</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right btn -->
+                    <div id="right-btn" class="cue-list-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="27" viewBox="0 0 21 34" fill="none">
+                            <path d="M3 3L17 17L3 31" stroke="black" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- confirmation menu -->
+            <div class="cue-menu-screen">
+                <div id="back-to-list-btn">< Quay lại</div>
+
+                <h3 id="confirmation-title">Bạn đã chọn</h3>
+
+                <div class="separator">
+                    <div class="separator-end"></div>
+                    <div class="separator-bar"></div>
+                    <div class="separator-end"></div>
+                </div>
+
+                <table id="selected-cues-table">
+                    <thead>
+                        <tr>
+                            <td style="width: 50%;">Tên sản phẩm</td>
+                            <td style="width: 25%;">Số lượng</td>
+                            <td style="width: 25%;">Giá</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    
+                </table>
+
+                <div id="confirm-btn">Xác nhận</div>
+            </div>
+
+            <!-- close btn -->
+            <div id="close-btn">X</div>
+        </div>
+    </div>
+</body>
+<script src="./popup.js"></script>
+</html>
