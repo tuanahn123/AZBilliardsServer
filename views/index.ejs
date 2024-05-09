@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Az Billards | Trang chủ</title>
+        <!-- Favicon -->
+        <!-- Google Fonts -->
+        <!--Reset CSS -->
+        <link rel="stylesheet" href="../universal/reset.css" />
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="../universal/header.css">
+        <link rel="stylesheet" href="./home.css">
+        <link rel="stylesheet" href="../universal/footer.css">
+    </head>
+    <body>
+      <!-- header -->
+    <div id="header">
+        <!-- main section -->
+        <div class="header-section" id="header-section-main">
+            <div id="header-nav">
+                <a href="../TrangChu/index.html" class="header-nav-link">
+                    <div class="header-nav-link-content active">
+                        TRANG CHỦ
+                    </div>
+                </a>
+
+                <a href="../GiaiDau/giaiDau.html" class="header-nav-link">
+                    <div class="header-nav-link-content" id="dropdown">
+                        GIẢI ĐẤU
+                    </div>
+                </a>
+
+                <a href="../HoiVien/membership.html" class="header-nav-link">
+                    <div class="header-nav-link-content" id="dropdown">
+                        HỘI VIÊN
+                    </div>
+                </a>
+            </div>
+
+
+            <a id="header-logo" href="../TrangChu/index.html"><img src="../img/LOGO.png"  alt=""></a>
+
+
+            <!-- search -->
+            <div id="header-utility">
+                        <a href="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="190 5 50 50" fill="none">
+                                <path d="M214.333 39.6667C221.697 39.6667 227.667 33.6971 227.667 26.3333C227.667 18.9695 221.697 13 214.333 13C206.97 13 201 18.9695 201 26.3333C201 33.6971 206.97 39.6667 214.333 39.6667Z" stroke="#DEB526" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M231 43L223.75 35.75" stroke="#DEB526" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+
+                <div class="header-utility-separator"></div>
+
+                <a href="../DangNhap/signin_login.html">
+                    <svg width='30' height='30'>
+                        <circle cx='15' cy='10' r='7' stroke='' stroke-width='0' fill='#DEB526' />
+                        <ellipse cx='15' cy='30' rx='15' ry='10' fill='#DEB526' stroke='' stroke-width='0' />
+                     </svg>
+                </a>
+
+                <div class="header-utility-separator"></div>
+
+                <a href="">
+                    <svg id="heart-svg" width="30" height="30" viewBox="15 15 30 30" xmlns="http://www.w3.org/2000/svg">
+                          <path id="heart" d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" fill="#DEB526"/>
+                      </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- body -->
+    <div id="body-container">
+        <!-- promotion carousel -->
+        <div id="promotion-carousel-container">
+            <div class="promotion-carousel-content"><img src="../img/banner1.png" alt=""></div>
+            <div class="promotion-carousel-content"><img src="../img/banner2.png" alt=""></div>
+            <div class="promotion-carousel-content"><img src="../img/banner1.png" alt=""></div>
+            <div class="promotion-carousel-content"><img src="../img/banner2.png" alt=""></div>
+
+            <button class="promotion-carousel-btn" id="promotion-carousel-dec">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 41 73" fill="none">
+                    <path d="M31.1224 63.0401L9 36.1292L31.1224 9.21826" stroke="#DEB526" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="promotion-carousel-btn" id="promotion-carousel-inc">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 41 73" fill="none">
+                    <path d="M9.00004 63.0401L31.1224 36.1292L9.00004 9.21826" stroke="#DEB526" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <div id="promotion-carousel-number-container">
+                <div class="promotion-carousel-number-btn" onclick="CurrentPromotionCarousel(0)"></div>
+                <div class="promotion-carousel-number-btn" onclick="CurrentPromotionCarousel(1)"></div>
+                <div class="promotion-carousel-number-btn" onclick="CurrentPromotionCarousel(2)"></div>
+                <div class="promotion-carousel-number-btn" onclick="CurrentPromotionCarousel(3)"></div>
+            </div>
+        </div>
+
+        <!-- lower banner area -->
+        <a href="../GiaiDau/giaiDau.html">
+            <div id="lower-banner-container">
+                <img src="../img/lowerBanner.png" alt="">
+                <span>TIN TỨC GIẢI ĐẤU</span>
+            </div>
+        </a>
+
+        <div class="about-us home-section">
+            <h1>VỀ CHÚNG TÔI</h1>
+
+            <div class="about-us-separator"></div>
+
+            <div class="about-us-section">
+                <h2>BILLARDS AZ - MANG CHO BẠN TRẢI NGHIỆM TỐT NHẤT</h2>
+                <p>Chúng tôi tự hào giới thiệu trang  web của mình - một địa điểm trực tuyến hoàn hảo cho những người yêu thích bi-a.
+                    Với sự kết hợp giữa sự hấp dẫn của trò chơi bida và tính năng đặt bàn online cùng việc cho thuê gậy, dụng cụ.
+                   Chúng tôi cam kết mang đến cho bạn một trải nghiệm tuyệt vời và tiện lợi nhất.</p>
+            </div>
+            <div class="about-us-section">
+                <h2>Môi Trường Thân Thiện và Chuyên Nghiệp</h2>
+                <p>Chúng tôi tạo ra một môi trường vui vẻ, thân thiện và chuyên nghiệp để bạn có thể thư giãn và tận hưởng trọn vẹn trò chơi bida. Đội ngũ nhân viên của chúng tôi luôn sẵn lòng hỗ trợ bạn từ việc lựa chọn gậy phù hợp đến việc giải đáp mọi thắc mắc liên quan đến trò chơi.</p>    
+            </div>
+        </div>
+
+        <div class="reserve-tables home-section">
+            <div class="reserve-tables-heading">
+                <div class="reserve-tables-heading-separator"><div class="separator-end" id="separator-left"></div></div>
+                <h1>ĐẶT BÀN BILLARDS</h1>
+                <div class="reserve-tables-heading-separator"><div class="separator-end" id="separator-right"></div></div>
+            </div>
+
+            <div class="tables-container">
+                <div class="tables">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+                <div class="tables out-of-tables">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+                <div class="tables discounted">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+                <div class="tables out-of-tables">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+                <div class="tables out-of-tables">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+                <div class="tables">
+                    <a href="../DatBan/orderTable.html">
+                        <div class="table-img">
+                            <img src="../img/table_img.png" alt="">
+                            <div class="table-discount"><span>-10%</span></div>
+                            <div class="table-state">
+                                <span>Hết bàn</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="table-info">
+                        <span class="table-name">Bàn Billards Allenton</span>
+
+                        <span class="table-price">80k/H</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tournament-signup home-section">
+            <div class="tournament-signup-side-col">
+                <img src="../img/tournament_left_1.png" alt="" class="side-col-big-img">
+                <img src="../img/tournament_left_2.png" alt="" class="side-col-small-img">
+            </div>
+
+            <div class="tournament-signup-middle-col">
+                <h1>ĐĂNG KÍ GIẢI ĐẤU</h1>
+
+                <img src="../img/tournament_middle.png" alt="" class="tournament-banner">
+
+                <a href="../GiaiDau/giaiDau.html" id="tournament-signup-btn">ĐĂNG KÍ NGAY</a>
+            </div>
+
+            <div class="tournament-signup-side-col">
+                <img src="../img/tournament_right_1.png" alt="" class="side-col-small-img">
+                <img src="../img/tournament_right_2.png" alt="" class="side-col-big-img">
+            </div>
+        </div>
+
+        <div class="membership-signup home-section">
+            <div class="grid-container">
+                <h1>ĐĂNG KÍ HỘI VIÊN</h1>
+
+                <p>Hãy trở thành Hội viên ngay để tiếp cận với các ưu đãi đặc biệt, bao gồm thuê gậy và dụng cụ billiards chất lượng cao.</p>
+
+                <a href="../HoiVien/membership.html" class="membership-signup-btn">ĐĂNG KÍ NGAY</a>
+
+                <img src="../img/home_membership_1.png" alt="" class="membership-signup-img img1">
+                <img src="../img/home_membership_2.png" alt="" class="membership-signup-img img2">
+                <img src="../img/home_membership_3.png" alt="" class="membership-signup-img img3">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div id="footer">
+        <a href="../TrangChu/index.html"><img src="../img/logo.png" alt="" id="footer-logo"></a>
+        <div class="footer-section" >
+
+            <span class="footer-heading"">LIÊN HỆ</span>
+            <div><span class="footer-info-title">Địa chỉ: </span><span class="footer-info">số 20 ngõ 113 Hoàng Cầu, Ô chợ Dừa, Đống Đa, Hà Nội</span></div>
+            <div><span class="footer-info-title">Hotline: </span><span class="footer-info">037287908</span></div>
+            <div><span class="footer-info-title">Mở cửa: </span><span class="footer-info">24/7</span></div>
+        </div>
+
+        <div class="footer-section">
+            <h2 class="footer-heading">THÔNG TIN</h2>
+            <a href="">Liên hệ</a>
+            <a href="">Giới thiệu</a>
+            <a href="">Tuyển dụng</a>
+        </div>
+
+        <div class="footer-section">
+            <h2 class="footer-heading">CHÍNH SÁCH</h2>
+            <a href="">Chính Sách Bảo Mật</a>
+            <a href="">Hướng dẫn thanh toán</a>
+            <a href="">Hướng dẫn đặt bàn</a>
+        </div>
+
+        <div class="footer-section" id="footer-last-section">
+            <h2 class="footer-heading">CHỨNG NHẬN</h2>
+            <img src="../img/footer_bct.png" alt="">
+            <img src="../img/footer_ncsc.png" alt="">
+        </div>
+    </div>
+
+</body>
+<script src="./home.js"></script>
+<script src="../universal/header.js"></script>
+</html>

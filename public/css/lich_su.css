@@ -1,0 +1,151 @@
+.LSDB {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.nav_container {
+    padding: 20px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.nav {
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.nav.active {
+    color: #deb526;
+}
+.nav:hover {
+    color: #deb526;
+}
+
+.nav:not(:last-child) {
+    margin-right: 5px; /* Khoảng cách giữa các phần */
+}
+
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for search container */
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.search{
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* Style for search form */
+.search .search-form {
+    width: 1061px;
+    /* Chiều rộng của thanh tìm kiếm */
+    display: flex;
+    margin: 0 auto;
+}
+
+/* Style for search input */
+.search .search-form input[type=text] {
+    flex: 1;
+    /* Tự mở rộng để lấp đầy không gian trống */
+    height: 84px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    margin-right: 37px;
+    border: #000 1px solid;
+}
+
+/* Style for search button */
+.search .search-form button {
+    width: 88px;
+    /* Chiều rộng của nút tìm kiếm */
+    height: 84px;
+    padding: 10px;
+    color: black;
+    border: #000 1px solid;
+    background-color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+/* Style for button text */
+.search .search-form button span {
+    display: none;
+    /* Ẩn nội dung bên trong nút */
+}
+
+/* Style for button icon */
+.search .search-form button i {
+    margin-right: 5px;
+}
+
+
+.form-wrapper {
+    border: 2px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 70%;
+    margin-bottom: 50px;
+
+}
+
+.history .form-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.history label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.history .separator {
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.pagination .page-link {
+    border: none;        
+    background-color: transparent; 
+    color: #000000;     
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #DEB526 !important; 
+    color: #000000 !important;            
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef; 
+}
+
+.pagination {
+    border: none;
+    box-shadow: none;
+}
+
+.custom-pagination{
+    position:relative;
+    right: 250px;
+}
