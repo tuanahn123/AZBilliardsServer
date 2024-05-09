@@ -2,6 +2,7 @@ const asyncHandle = require("../helpers/asyncHandler");
 const { AuthFailureError } = require("../responseHandle/error.response");
 
 const checkLogin = asyncHandle(async (req, res, next) => {
+    console.log(req.session)
     
     if (req.session.login) {
         next()

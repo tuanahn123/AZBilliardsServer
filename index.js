@@ -1,22 +1,25 @@
 const express = require('express')
-
+const cors = require('cors')
+const path = require('path')
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-
 require('dotenv').config();
 
 const session = require('express-session');
 
+app.use(cors());
 // Cấu hình middleware session
 app.use(session({
     secret: 'AZBilliards@123',
-    resave: false, 
+    resave: true, 
     saveUninitialized: false,
     cookie: {
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 // connect to mySQL
 require('./dbs/initDb')
 require('./dbs/importDb')

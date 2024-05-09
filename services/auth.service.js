@@ -25,6 +25,7 @@ class AuthService {
         return {
             id: checkResults[0].id,
             username: checkResults[0].username,
+            fullname: checkResults[0].fullname,
             email: checkResults[0].email,
             role: checkResults[0].role
         }

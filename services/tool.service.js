@@ -3,8 +3,21 @@ const { BadRequestError } = require("../responseHandle/error.response");
 const { getInfoData } = require("../utils");
 
 class ToolService {
+    static getAll = async () => {
+        const checkQuery = 'SELECT id,name, description, image, price FROM Tool Where status = "1"';
+        const checkResults = await new Promise((resolve, reject) => {
+            db.query(checkQuery, (checkError, results) => {
+                if (checkError) {
+                    reject(new BadRequestError("Có lỗi xảy ra"));
+                    return;
+                }
+                resolve(results);
+            });
+        });
+        return checkResults;
+    }
     static getById = async (id) => {
-        const checkQuery = 'SELECT name, description, image, price FROM Tool Where id = ? and status = "1"';
+        const checkQuery = 'SELECT id,name, description, image, price FROM Tool Where id = ? and status = "1"';
         const checkResults = await new Promise((resolve, reject) => {
             db.query(checkQuery, [id], (checkError, results) => {
                 if (checkError) {

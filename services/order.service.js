@@ -46,6 +46,7 @@ class OrderService {
             end_date: row.end_date,
             combo: row.combo,
             quantity_tool: row.quantity_tool,
+            price: row.price,
             user: {
                 id: row.user_id,
                 fullname: row.fullname,
@@ -102,7 +103,7 @@ class OrderService {
         let totalPrice = price * (100 - discount_rate) / 100;
 
         // Nếu có combo, cập nhật giá theo combo
-        if (combo != null) {
+        if (combo && combo != null) {
             const queryComboPriceTable = `SELECT price_combo_${combo} FROM Desk WHERE id = ?`;
             const resultQueryComboPriceTable = await new Promise((resolve, reject) => {
                 db.query(queryComboPriceTable, [desk_id], (checkError, results) => {
@@ -134,7 +135,7 @@ class OrderService {
         // Kiểm tra xem người dùng có là thành viên và đang hợp lệ không
         const vietnamTimezone = 'Asia/Ho_Chi_Minh';
         const currentDate = moment.tz(new Date(), vietnamTimezone).format('YYYY-MM-DD HH:mm:ss');
-        const queryOrderMembership = 'SELECT * FROM OrderMembership WHERE user_id = ? AND end_date > ?';
+        const queryOrderMembership = 'SELECT * FROM OrderMembership WHERE user_id = ? AND end_date > ? AND status = "1"';
         const resultQueryOrderMembership = await new Promise((resolve, reject) => {
             db.query(queryOrderMembership, [desk_id, currentDate], (checkError, results) => {
                 if (checkError) {
@@ -259,7 +260,7 @@ class OrderService {
         return selectResults;
     }
     static async acceptOrderMembership(id) {
-        const updateQuery = 'UPDATE Tool SET status = "1" WHERE id = ?';
+        const updateQuery = 'UPDATE OrderMembership SET status = "1" WHERE id = ?';
         const updateResults = await new Promise((resolve, reject) => {
             db.query(updateQuery, [id], (updateError, results) => {
                 if (updateError) {

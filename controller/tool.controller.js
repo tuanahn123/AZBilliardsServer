@@ -1,6 +1,12 @@
 const { SuccessResponse } = require("../responseHandle/success.response")
 const ToolService = require("../services/tool.service")
 class ToolController {
+    static getAll = async(req, res, next)=>{
+        new SuccessResponse({
+            message:'Lấy danh sách dụng cụ thành công!',
+            metadata: await ToolService.getAll()
+        }).send(res)
+    }
     static getById = async(req, res, next)=>{
         new SuccessResponse({
             message:'Lấy thông tin dụng cụ thành công!',

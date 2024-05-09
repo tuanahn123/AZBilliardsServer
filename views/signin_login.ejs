@@ -1,0 +1,46 @@
+<head>
+    <link rel="stylesheet" href="./signin_login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="login-page">
+            <div class="form">
+                <form class="register-form">
+                    <input type="text" placeholder="Tên của bạn"/>
+                    <input type="text" placeholder="Tên đăng nhập" required/>
+                    <input type="password" placeholder="Mật khẩu" required/>
+                    <input type="email" placeholder="Email" />                 
+                    <button>ĐĂNG KÍ</button>
+                    <p class="message">Đã có tài khoản? <a href="#">Đăng nhập</a></p>
+                </form>
+                    <input type="text" placeholder="Tên đăng nhập" required/>
+                    <input type="password" placeholder="Mật khẩu" required/>
+                    <button onclick="login()">ĐĂNG NHẬP</button>
+                    <p class="message">Chưa có tài khoản? <a href="#">Đăng kí</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+        function login() {
+        $.ajax({
+            url: "http://localhost:3000/api/login",
+            method: "POST",
+            data: {
+                username: "admin",
+                password: "111"
+            },
+            success: ((res) => {
+                if(res.status == 200){
+                    
+                }
+            })
+        })
+    }
+    </script>
+</body>
