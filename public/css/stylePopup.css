@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+}
+button:hover {
+    opacity: 0.7;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+.overlay .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 85vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 11;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.overlay .popup .image {
+    margin-top: 10px;
+}
+.popup .popup_image .btn_back {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #777;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+.popup_image .image .main_image {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.popup_image .image .sub_image {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+.popup_image .image .sub_img {
+    width: calc(90% / 3);
+    height: auto;
+    object-fit: cover;
+}
+.popup_info {
+    padding-top: 20px;
+}
+.popup .popup_info .heading_info {
+    color: #deb526;
+    font-size: 25px;
+    font-weight: 700;
+    width: 90%;
+}
+.popup_info .price_info {
+    color: #de5d26;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.popup_info .content_info {
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.popup_info .select_and_rent {
+    display: flex;
+    margin-top: 20px;
+    gap: 30px;
+    align-items: center;
+}
+.popup_info .select_and_rent .quantity_label {
+    color: #555;
+    font-size: 20px;
+    font-weight: 400;
+}
+.popup_info .select_quantity {
+    overflow: hidden;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.popup_info .select_quantity .minus_btn,
+.popup_info .select_quantity .plus_btn {
+    border: none;
+    outline: none;
+    background: #f9f5f5;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.popup_info .select_quantity .minus_btn {
+    border-right: 1px solid #000;
+}
+.popup_info .select_quantity .plus_btn {
+    border-left: 1px solid #000;
+}
+.popup_info .select_quantity .quantity {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: inline-block;
+    padding: 5px 10px;
+}
+.popup_info .select_and_rent .call_rent {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #deb526;
+    cursor: pointer;
+}

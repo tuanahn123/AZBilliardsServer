@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    min-width: 800px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+button:hover {
+    opacity: 0.8;
+}
+a {
+    text-decoration: none;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 110px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+
+    z-index: 20;
+
+    transition: 0.25s;
+}
+
+.header-section {
+    position: relative;
+
+    width: 100%;
+}
+
+/* Main section */
+#header-section-main {
+    box-sizing: border-box;
+
+    position: relative;
+
+    width: 100%;
+    height: 110px;
+
+    padding-inline: 3dvw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #232323;
+}
+
+#header-logo {
+    position: absolute;
+    left: calc(50% - 55px);
+}
+
+#header-logo > img {
+    height: 110px;
+}
+
+#header-nav {
+    position: relative;
+
+    width: 461px;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-nav-link-content {
+    min-width: 100px;
+
+    color: #cdcdcd;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+.header-nav-link-content:hover {
+    color: #deb526;
+
+    transition: 0.25s;
+}
+
+.active {
+    color: #deb526;
+
+    transition: 0.25s;
+}
+
+/* Utility bar */
+#header-utility {
+    width: 15%;
+
+    margin-right: 3%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-utility-separator {
+    height: 40px;
+    width: 1px;
+
+    background-color: #cdcdcd;
+}
+
+#header-utility > a > svg {
+    filter: grayscale(1);
+
+    transition: 0.25s;
+}
+
+#header-utility > a > svg:hover {
+    filter: grayscale(0);
+
+    transition: 0.25s;
+}
+/* Content */
+
+.tournaments_content .heading {
+    position: relative;
+}
+.tournaments_content .heading .image_banner {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+.tournaments_content .overlay {
+    width: 100%;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+.tournaments_content .overlay .content .tour_name {
+    color: #deb526;
+    text-align: center;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+.tournaments_content .overlay .content .submit_tour {
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: #deb526;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+.tournaments_content .overlay .content .heading_content {
+    color: #deb526;
+    text-align: center;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    padding-top: 10vh;
+    margin-bottom: 20px;
+}
+.tournaments_info {
+    padding: 0 15vw;
+}
+.tournaments_info .title {
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-top: 20px;
+}
+.tournaments_info .paragraph {
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    width: 80%;
+    margin: 10px auto 10px;
+}
+.detail_info {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.detail_title_row {
+    text-align: start;
+    color: #000;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.detail_content_row {
+    text-align: end;
+    color: #000;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.separator {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #deb526;
+}
+.separator .paragraph {
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.award {
+    margin-top: 50px;
+    padding: 0 15vw;
+    margin-bottom: 50px;
+}
+.award .award_heading {
+    color: #000;
+    font-size: 30px;
+    font-weight: 700;
+}
+.award .award_content {
+    color: #000;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.banner_touraments {
+    background: #333;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.banner_touraments .paragraph {
+    color: #deb526;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    transform: translateX(50%);
+}
+.rules {
+    padding: 0 15vw;
+}
+.rules .heading_rules {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.rules .content_rules {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+.tournaments_content .submit_tour {
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: #deb526;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+.tournaments_content .register {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#footer {
+    padding-inline: 3%;
+
+    background-color: #333;
+
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+}
+
+.footer-section {
+    width: 25%;
+
+    padding: 1%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section > div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#footer-logo {
+    width: 150px;
+    height: 130px;
+
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.footer-info {
+    color: white;
+
+    font-size: 16px;
+}
+
+.footer-info-title {
+    color: #deb526;
+
+    font-size: 16px;
+}
+
+#footer-contact {
+    font-size: 20px;
+}
+
+.footer-heading {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    color: #deb526;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer-section > a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+
+    color: white;
+
+    font-size: 16px;
+
+    background-image: linear-gradient(white, white);
+    background-position: bottom left;
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+
+    transition: 0.25s;
+}
+
+.footer-section > a:hover {
+    background-size: 100% 3px;
+
+    transition: 0.25s;
+}
+
+#footer-last-section > img {
+    margin-bottom: 40px;
+
+    height: 75px;
+    width: 225px;
+}
