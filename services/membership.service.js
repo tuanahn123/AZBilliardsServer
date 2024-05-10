@@ -33,6 +33,37 @@ class MembershipService {
         });
         return memberships;
     }
+    static getById = async (id) => {
+        const selectQuery = `
+            SELECT 
+                Membership.id, 
+                Membership.name, 
+                Membership.description, 
+                Membership.price_month, 
+                Membership.price_quater, 
+                Membership.price_year, 
+                MembershipDetail.discount_rate, 
+                MembershipDetail.point_rate 
+            FROM 
+                Membership 
+            JOIN 
+                MembershipDetail 
+            ON 
+                Membership.membership_detail_id = MembershipDetail.id
+            WHERE 
+            Membership.status = "1" AND Membership.id = ${id}
+        `;
+        const memberships = await new Promise((resolve, reject) => {
+            db.query(selectQuery, (error, results) => {
+                if (error) {
+                    reject(new DatabaseError(error.message));
+                    return;
+                }
+                resolve(results);
+            });
+        });
+        return memberships;
+    }
 
     static create = async ({ name, description, price_month, price_quater, price_year, discount_rate, point_rate }) => {
         // Thêm mới bản ghi vào bảng MembershipDetail
@@ -115,7 +146,7 @@ class MembershipService {
         });
         return updateResults;
     }
-    
+
 }
 
 module.exports = MembershipService

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Quản trị AZBilliard</title>
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+
+</head>
+<style>
+    .dataTables_length {
+        display: none;
+    }
+
+    .table thead th {
+        vertical-align: middle;
+    }
+
+    table td {
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 250px;
+    }
+</style>
+
+<body id="page-top">
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">AZBilliard</div>
+            </a>
+
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Quản lý đặt bàn</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/order_membership">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Quản lý hội viên</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/membership">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Quản lý ưu đãi hội viên</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/desk">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý bàn</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tool">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý dụng cụ</span></a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="full_name"></span>
+                                <img class="img-profile rounded-circle" src="../image/undraw_profile.svg">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex justify-content-between">
+                            <h3 class="m-0 font-weight-bold text-primary">Quản lý bàn</h3>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#addDesk">Thêm bàn</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tên</th>
+                                            <th>Mô tả</th>
+                                            <th>Loại bàn</th>
+                                            <th>Kích thước phủ bì</th>
+                                            <th>Kích thước sử dụng</th>
+                                            <th>Kích thước lỗ</th>
+                                            <th>Màu sắc</th>
+                                            <th>Nỉ</th>
+                                            <th>Nép thành băng</th>
+                                            <th>Thành băng</th>
+                                            <th>Góc và ốp</th>
+                                            <th>Đá</th>
+                                            <th>Băng cao su</th>
+                                            <th>Tình trạng</th>
+                                            <th>Giảm giá</th>
+                                            <th>Giá 1h</th>
+                                            <th>Giá combo sáng</th>
+                                            <th>Giá combo chiều</th>
+                                            <th>Giá combo tối</th>
+                                            <th>Công cụ thuê kèm</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <div class="modal fade" id="addDesk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm bàn</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="name_create" class="col-form-label ">Tên:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="name_create" class="form-control" placeholder="Nhập name">
+                                    <div class="invalid-feedback">Vui lòng nhập tên</div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_create" class="col-form-label ">Giá 1h:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_create" class="form-control" placeholder="Nhập giá 1h">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_0_create" class="col-form-label ">Giá combo sáng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_0_create" class="form-control"
+                                        placeholder="Nhập giá combo sáng">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_1_create" class="col-form-label ">Giá combo chiều:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_1_create" class="form-control"
+                                        placeholder="Nhập giá combo chiều">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_2_create" class="col-form-label ">Giá combo tối:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_2_create" class="form-control"
+                                        placeholder="Nhập giá combo tối">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="description_create" class="col-form-label">Mô tả:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="description_create" class="form-control"
+                                        placeholder="Nhập mô tả">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="type_create" class="col-form-label ">Loại bàn:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="type_create" class="form-control"
+                                        placeholder="Nhập loại bàn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="tools_create" class="col-form-label ">Dụng cụ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-control" name="" id="tools_create">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="outer_dimension_create" class="col-form-label ">Kích thước phủ bì:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="outer_dimension_create" class="form-control"
+                                        placeholder="Nhập kích thước phủ bì">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="usable_dimension_create" class="col-form-label">Kích thước sử dụng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="usable_dimension_create" class="form-control"
+                                        placeholder="Nhập kích thước sử dụng">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="hole_dimension_create" class="col-form-label ">Kích thước lỗ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="hole_dimension_create" class="form-control"
+                                        placeholder="Nhập kích thước lỗ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="color_create" class="col-form-label">Màu sắc:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="color_create" class="form-control"
+                                        placeholder="Nhập màu sắc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="fabric_create" class="col-form-label ">Nỉ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="fabric_create" class="form-control" placeholder="Nhập nỉ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="cushion_rail_create" class="col-form-label">Nép thành băng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="cushion_rail_create" class="form-control"
+                                        placeholder="Nhập nép thành băng">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="cushion_create" class="col-form-label ">Thành băng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="cushion_create" class="form-control"
+                                        placeholder="Nhập thành băng">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="edge_and_trim_create" class="col-form-label">Góc và ốp:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="edge_and_trim_create" class="form-control"
+                                        placeholder="Nhập góc và ốp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="stone_create" class="col-form-label ">Đá:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="stone_create" class="form-control" placeholder="Nhập đá">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="rubber_band_create" class="col-form-label">Băng cao su:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="rubber_band_create" class="form-control"
+                                        placeholder="Nhập băng cao su">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="discount_rate_create" class="col-form-label">Giảm giá:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="discount_rate_create" class="form-control"
+                                        placeholder="Nhập giảm giá">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Hủy bỏ</button>
+                    <button class="btn btn-primary" type="button" onclick="create()">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateDesk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa bàn</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="name_update" class="col-form-label ">Tên:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="name_update" class="form-control" placeholder="Nhập name">
+                                    <div class="invalid-feedback">Vui lòng nhập tên</div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_update" class="col-form-label ">Giá 1h:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_update" class="form-control" placeholder="Nhập giá 1h">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_0_update" class="col-form-label ">Giá combo sáng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_0_update" class="form-control"
+                                        placeholder="Nhập giá combo sáng">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_1_update" class="col-form-label ">Giá combo chiều:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_1_update" class="form-control"
+                                        placeholder="Nhập giá combo chiều">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="price_combo_2_update" class="col-form-label ">Giá combo tối:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="price_combo_2_update" class="form-control"
+                                        placeholder="Nhập giá combo tối">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="description_update" class="col-form-label">Mô tả:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="description_update" class="form-control"
+                                        placeholder="Nhập mô tả">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="type_update" class="col-form-label ">Loại bàn:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="type_update" class="form-control"
+                                        placeholder="Nhập loại bàn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="tools_update" class="col-form-label ">Dụng cụ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-control" name="" id="tools_update">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="outer_dimension_update" class="col-form-label ">Kích thước phủ bì:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="outer_dimension_update" class="form-control"
+                                        placeholder="Nhập kích thước phủ bì">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="usable_dimension_update" class="col-form-label">Kích thước sử dụng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="usable_dimension_update" class="form-control"
+                                        placeholder="Nhập kích thước sử dụng">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="hole_dimension_update" class="col-form-label ">Kích thước lỗ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="hole_dimension_update" class="form-control"
+                                        placeholder="Nhập kích thước lỗ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="color_update" class="col-form-label">Màu sắc:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="color_update" class="form-control"
+                                        placeholder="Nhập màu sắc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="fabric_update" class="col-form-label ">Nỉ:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="fabric_update" class="form-control" placeholder="Nhập nỉ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="cushion_rail_update" class="col-form-label">Nép thành băng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="cushion_rail_update" class="form-control"
+                                        placeholder="Nhập nép thành băng">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="cushion_update" class="col-form-label ">Thành băng:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="cushion_update" class="form-control"
+                                        placeholder="Nhập thành băng">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="edge_and_trim_update" class="col-form-label">Góc và ốp:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="edge_and_trim_update" class="form-control"
+                                        placeholder="Nhập góc và ốp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="stone_update" class="col-form-label ">Đá:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="stone_update" class="form-control" placeholder="Nhập đá">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="rubber_band_update" class="col-form-label">Băng cao su:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="rubber_band_update" class="form-control"
+                                        placeholder="Nhập băng cao su">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+
+                        <div class="col-6 mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <label for="discount_rate_update" class="col-form-label">Giảm giá:
+                                    </label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="discount_rate_update" class="form-control"
+                                        placeholder="Nhập giảm giá">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Hủy bỏ</button>
+                    <button class="btn btn-primary" type="button" id="btn_update" onclick="update()">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteDesk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa ưu đãi</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Bạn có chắc chắn xóa không</h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" type="button" data-dismiss="modal">Hủy bỏ</button>
+                    <button class="btn btn-danger" type="button" id="btn_delete" onclick="deleteDesk()">Đồng
+                        ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../javascript/sb-admin-2.min.js"></script>
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../javascript/demo/datatables-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+<script>
+    $.ajax({
+        url: 'http://localhost:3000/api/desk',
+        method: "GET",
+        success: (res) => {
+            if (res.status == 200) {
+                renderDesk(res.metadata)
+            }
+        }
+    })
+    function renderDesk(data) {
+        if (data.length > 0) {
+            let html = ''
+            console.log(data);
+            data.forEach((desk, i) => {
+                html += `<tr>
+                            <td>${i + 1}</td>
+                            <td>${desk.name}</td>
+                            <td>${desk.description}</td>
+                            <td>${desk.type}</td>
+                            <td>${desk.outer_dimension}</td>
+                            <td>${desk.usable_dimension}</td>
+                            <td>${desk.hole_dimension}</td>
+                            <td>${desk.color}</td>
+                            <td>${desk.fabric}</td>
+                            <td>${desk.cushion_rail}</td>
+                            <td>${desk.cushion}</td>
+                            <td>${desk.edge_and_trim}</td>
+                            <td>${desk.stone}</td>
+                            <td>${desk.rubber_band}</td>
+                            <td>${desk.status}</td>
+                            <td>${desk.discount_rate}</td>
+                            <td>${desk.price}</td>
+                            <td>${desk.price_combo_0}</td>
+                            <td>${desk.price_combo_1}</td>
+                            <td>${desk.price_combo_2}</td>
+                            <td>${desk.id_tool}</td>
+                            <td><button class = "btn btn-primary" onclick = "edit(${desk.id})" data-toggle="modal" data-target="#updateDesk">Sửa</button></td>
+                            <td><button class = "btn btn-danger" onclick = "deleteT(${desk.id})" data-toggle="modal" data-target="#deleteDesk">Xóa</button></td>
+                        </tr>`
+            });
+            if ($.fn.DataTable.isDataTable('#dataTable')) {
+                $('#dataTable').DataTable().destroy();
+            }
+            $("#dataTable tbody").html(html)
+            // Khởi tạo DataTable mới
+            $('#dataTable').DataTable();
+        }
+        else {
+            $("#dataTable tbody").html(`<tr><td colspan = "9"><p class="text-center">Chưa có dữ liệu</p></td></tr>`)
+
+        }
+    }
+    $.ajax({
+        url: 'http://localhost:3000/api/tool',
+        method: "GET",
+        success: (res) => {
+            if (res.status == 200) {
+                getAllTools(res.metadata)
+            }
+        }
+    })
+    function getAllTools(data) {
+        console.log(data);
+        var html = ''
+        data.forEach((tool, index) => {
+            html += `
+                 <option value = "${tool.id}">${tool.name}</option>        
+            `
+        })
+        $('#tools_create').html(html)
+        $('#tools_update').html(html)
+    }
+
+    function create() {
+        var name = $("#name_create").val();
+        var price = parseInt($("#price_create").val());
+        var price_combo_0 = parseInt($("#price_combo_0_create").val());
+        var price_combo_1 = parseInt($("#price_combo_1_create").val());
+        var price_combo_2 = parseInt($("#price_combo_2_create").val());
+        var description = $("#description_create").val();
+        var outer_dimension = $("#outer_dimension_create").val();
+        var usable_dimension = $("#usable_dimension_create").val();
+        var hole_dimension = $("#hole_dimension_create").val();
+        var color = $("#color_create").val();
+        var fabric = $("#fabric_create").val();
+        var cushion_rail = $("#cushion_rail_create").val();
+        var cushion = $("#cushion_create").val();
+        var edge_and_trim = $("#edge_and_trim_create").val();
+        var stone = $("#stone_create").val();
+        var rubber_band = $("#rubber_band_create").val();
+        var discount_rate = parseInt($("#discount_rate_create").val());
+        var type = $("#type_create").val();
+        var selectedTool = $("#tools_create").val();
+        $.ajax({
+            url: "http://localhost:3000/api/desk",
+            method: "POST",
+            data: {
+                name: name,
+                price: price,
+                price_combo_0: price_combo_0,
+                price_combo_1: price_combo_1,
+                price_combo_2: price_combo_2,
+                description: description,
+                type: type, // Thêm giá trị loại bàn
+                outer_dimension: outer_dimension,
+                usable_dimension: usable_dimension,
+                hole_dimension: hole_dimension,
+                color: color,
+                fabric: fabric,
+                cushion_rail: cushion_rail,
+                cushion: cushion,
+                edge_and_trim: edge_and_trim,
+                stone: stone,
+                rubber_band: rubber_band,
+                discount_rate: discount_rate,
+                id_tool: selectedTool
+            },
+            success: ((res) => {
+                console.log(res)
+                if (res.status == 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.reload()
+                    })
+                }
+                else if (res.code == 401) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = `/signin_login`
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `Có lỗi xảy ra`,
+                        timer: 1500
+                    })
+                }
+            })
+        })
+    }
+    function edit(id) {
+        $.ajax({
+            url: `http://localhost:3000/api/desk/${id}`,
+            method: "GET",
+            success: ((res) => {
+
+                console.log(res.metadata[0])
+                if (res.status == 200) {
+                    $("#name_update").val(res.metadata[0].name);
+                    $("#description_update").val(res.metadata[0].description);
+                    $("#price_update").val(res.metadata[0].price);
+                    $("#price_combo_0_update").val(res.metadata[0].price_combo_0);
+                    $("#price_combo_1_update").val(res.metadata[0].price_combo_1);
+                    $("#price_combo_2_update").val(res.metadata[0].price_combo_2);
+                    $("#outer_dimension_update").val(res.metadata[0].outer_dimension);
+                    $("#usable_dimension_update").val(res.metadata[0].usable_dimension);
+                    $("#hole_dimension_update").val(res.metadata[0].hole_dimension);
+                    $("#color_update").val(res.metadata[0].color);
+                    $("#fabric_update").val(res.metadata[0].fabric);
+                    $("#cushion_rail_update").val(res.metadata[0].cushion_rail);
+                    $("#cushion_update").val(res.metadata[0].cushion);
+                    $("#edge_and_trim_update").val(res.metadata[0].edge_and_trim);
+                    $("#stone_update").val(res.metadata[0].stone);
+                    $("#rubber_band_update").val(res.metadata[0].rubber_band);
+                    $("#discount_rate_update").val(res.metadata[0].discount_rate);
+                    $("#type_update").val(res.metadata[0].type); // Thêm dòng này để đặt giá trị cho input loại bàn
+                    $("#tools_update").val(res.metadata[0].id_tool); // Đặt giá trị đã chọn cho select box dụng cụ
+                }
+                else if (res.code == 401) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = `/signin_login`
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `Có lỗi xảy ra`,
+                        timer: 1500
+                    })
+                }
+            })
+        })
+        $("#btn_update").attr("onclick", `update(${id}) `)
+    }
+    function update(id) {
+        var name = $("#name_update").val();
+        var price = parseInt($("#price_update").val());
+        var price_combo_0 = parseInt($("#price_combo_0_update").val());
+        var price_combo_1 = parseInt($("#price_combo_1_update").val());
+        var price_combo_2 = parseInt($("#price_combo_2_update").val());
+        var description = $("#description_update").val();
+        var outer_dimension = $("#outer_dimension_update").val();
+        var usable_dimension = $("#usable_dimension_update").val();
+        var hole_dimension = $("#hole_dimension_update").val();
+        var color = $("#color_update").val();
+        var fabric = $("#fabric_update").val();
+        var cushion_rail = $("#cushion_rail_update").val();
+        var cushion = $("#cushion_update").val();
+        var edge_and_trim = $("#edge_and_trim_update").val();
+        var stone = $("#stone_update").val();
+        var rubber_band = $("#rubber_band_update").val();
+        var discount_rate = parseInt($("#discount_rate_update").val());
+        var type = $("#type_update").val();
+        var selectedTool = $("#tools_update").val();
+
+        $.ajax({
+            url: `http://localhost:3000/api/desk/${id}`,
+            method: "POST",
+            data: {
+                name: name,
+                price: price,
+                price_combo_0: price_combo_0,
+                price_combo_1: price_combo_1,
+                price_combo_2: price_combo_2,
+                description: description,
+                type: type, // Thêm giá trị loại bàn
+                outer_dimension: outer_dimension,
+                usable_dimension: usable_dimension,
+                hole_dimension: hole_dimension,
+                color: color,
+                fabric: fabric,
+                cushion_rail: cushion_rail,
+                cushion: cushion,
+                edge_and_trim: edge_and_trim,
+                stone: stone,
+                rubber_band: rubber_band,
+                discount_rate: discount_rate,
+                id_tool: selectedTool
+            },
+            success: ((res) => {
+                console.log(res)
+                if (res.status == 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.reload()
+                    })
+                }
+                else if (res.code == 401) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = `/signin_login`
+                    })
+                }
+            })
+        })
+    }
+    function deleteT(id) {
+        $("#btn_delete").attr("onclick", `deleteDesk(${id})`)
+    }
+    function deleteDesk(id) {
+        $.ajax({
+            url: `http://localhost:3000/api/desk/${id}`,
+            method: "DELETE",
+            success: ((res) => {
+                console.log(res)
+                if (res.status == 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.reload()
+                    })
+                }
+                else if (res.code == 401) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thông báo',
+                        text: `${res.message}`,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = `/signin_login`
+                    })
+                }
+            })
+        })
+    }
+</script>
+
+</html>

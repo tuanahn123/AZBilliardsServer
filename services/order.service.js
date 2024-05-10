@@ -246,7 +246,7 @@ class OrderService {
                 Membership 
             ON 
                 OrderMembership.membership_id = Membership.id
-            Where OrderMembership.status = '2'
+            
         `;
         const selectResults = await new Promise((resolve, reject) => {
             db.query(selectQuery, (selectError, results) => {
@@ -260,7 +260,7 @@ class OrderService {
         return selectResults;
     }
     static async acceptOrderMembership(id) {
-        const updateQuery = 'UPDATE OrderMembership SET status = "1" WHERE id = ?';
+        const updateQuery = "UPDATE OrderMembership SET status = '0' WHERE id = ?";
         const updateResults = await new Promise((resolve, reject) => {
             db.query(updateQuery, [id], (updateError, results) => {
                 if (updateError) {

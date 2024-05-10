@@ -6,6 +6,7 @@ const { checkRole, checkLogin } = require('../middleware/checkLogin')
 const router = express.Router()
 
 router.get('/', asyncHandle(MembershipController.getAll))
+router.get('/:id', asyncHandle(MembershipController.getById))
 router.use(checkLogin)
 router.use(checkRole)
 router.post('/', asyncHandle(MembershipController.create))

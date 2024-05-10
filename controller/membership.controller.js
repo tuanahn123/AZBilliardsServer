@@ -7,6 +7,12 @@ class MembershipController {
             metadata: await MembershipService.getAll(req.params.id)
         }).send(res)
     }
+    static getById = async(req, res, next)=>{
+        new SuccessResponse({
+            message:'Lấy thông tin hội viên thành công!',
+            metadata: await MembershipService.getById(req.params.id)
+        }).send(res)
+    }
     static create = async(req, res, next)=>{
         new SuccessResponse({
             message:'Tạo mới thông tin hội viên thành công!',

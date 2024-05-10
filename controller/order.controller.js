@@ -16,7 +16,7 @@ class OrderController {
     static acceptOrderMembership = async (req, res, next) => {
         new SuccessResponse({
             message: 'Xác nhận hội viên thành công!',
-            metadata: await OrderService.acceptOrderMembership(req.param.id)
+            metadata: await OrderService.acceptOrderMembership(req.params.id)
         }).send(res)
     }
     static orderDesk = async (req, res, next) => {
