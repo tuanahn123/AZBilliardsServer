@@ -15,6 +15,9 @@ router.use('/membership', checkLogin, (req, res, next) => {
 router.use('/orderTable', checkLogin, (req, res, next) => {
     res.render('orderTable')
 })
+router.use('/dangki_giaidau', (req, res, next) => {
+    res.render('dki_giaidau')
+})
 router.use('/admin/tool', checkRole, (req, res, next) => {
     res.render('admin_tool')
 })
