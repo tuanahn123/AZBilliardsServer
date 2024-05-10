@@ -1,10 +1,19 @@
 const express = require('express')
-const { checkRole } = require('../middleware/checkLogin')
+const { checkRole, checkLogin } = require('../middleware/checkLogin')
 
 const router = express.Router()
 
 router.use('/signin_login', (req, res, next) => {
     res.render('signin_login')
+})
+router.use('/giai-dau', checkLogin, (req, res, next) => {
+    res.render('giaiDau')
+})
+router.use('/membership', checkLogin, (req, res, next) => {
+    res.render('membership')
+})
+router.use('/orderTable', checkLogin, (req, res, next) => {
+    res.render('orderTable')
 })
 router.use('/admin/tool', checkRole, (req, res, next) => {
     res.render('admin_tool')

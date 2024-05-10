@@ -5,8 +5,8 @@ const checkLogin = asyncHandle(async (req, res, next) => {
     if (req.session.login) {
         next()
     } else {
-        // res.redirect("/signin_login")
-        throw new AuthFailureError("Bạn chưa đăng nhập !");
+        res.redirect("/signin_login")
+        // throw new AuthFailureError("Bạn chưa đăng nhập !");
     }
 })
 const checkRole = asyncHandle(async (req, res, next) => {
