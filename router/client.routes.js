@@ -21,6 +21,9 @@ router.use('/admin/desk', checkRole, (req, res, next) => {
 router.use('/admin/order_membership', checkRole, (req, res, next) => {
     res.render('admin_order_membership')
 })
+router.use('/admin', checkRole, (req, res, next) => {
+    res.render('admin')
+})
 router.use('/', (req, res, next) => {
     res.render('index')
 })
