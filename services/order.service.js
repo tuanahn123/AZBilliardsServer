@@ -246,7 +246,11 @@ class OrderService {
                 Membership 
             ON 
                 OrderMembership.membership_id = Membership.id
+<<<<<<< HEAD
             
+=======
+            Where OrderMembership.status = '2'
+>>>>>>> refs/remotes/origin/hai
         `;
         const selectResults = await new Promise((resolve, reject) => {
             db.query(selectQuery, (selectError, results) => {

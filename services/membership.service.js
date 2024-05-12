@@ -146,7 +146,6 @@ class MembershipService {
         });
         return updateResults;
     }
-
 }
 
 module.exports = MembershipService

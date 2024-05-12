@@ -4,10 +4,8 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: 'AZBilliards'
+  database: process.env.DB_DATABASE
 });
-
-console.log(process.env.DB_DATABASE)
 
 db.connect((err) => {
   if (err) {
