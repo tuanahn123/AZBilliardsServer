@@ -1,0 +1,96 @@
+<head>
+    <link rel="stylesheet" href="../css/signin_login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="login-page">
+            <div class="form">
+                <div class="form-text register-form">
+                    <input type="text" id="fullname_register" placeholder="Tên của bạn" />
+                    <input type="text" id="username_register" placeholder="Tên đăng nhập" required />
+                    <input type="password" id="password_register" placeholder="Mật khẩu" required />
+                    <input type="email" id="email_register" placeholder="Email" />
+                    <button onclick="register()">ĐĂNG KÍ</button>
+                    <p class="message">Đã có tài khoản? <a href="#">Đăng nhập</a></p>
+                </div>
+                <div class="form-text login-form">
+                    <input type="text" id="username_login" placeholder="Tên đăng nhập" required />
+                    <input type="password" id="password_login" placeholder="Mật khẩu" required />
+                    <button onclick="login()">ĐĂNG NHẬP</button>
+                    <p class="message">Chưa có tài khoản? <a href="#" >Đăng kí</a></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $('p').click(function () {
+            $('.form-text').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+        function login() {
+            $.ajax({
+                url: "http://localhost:3000/api/login",
+                method: "POST",
+                data: {
+                    username: `${$('#username_login').val()}`,
+                    password: `${$('#password_login').val()}`,
+
+                },
+                success: ((res) => {
+                    if (res.status == 200) {
+                        console.log(res)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thông báo',
+                            text: `${res.message}`,
+                            timer: 1500
+                        }).then(() => {
+                            if (res.metadata.role == "0") {
+                                window.location.href = "/admin/membership"
+                            }
+                            else {
+                                window.location.href = "/"
+                            }
+                        })
+                    }
+                })
+            })
+        }
+        function register() {
+            $.ajax({
+                url: "http://localhost:3000/api/user",
+                method: "POST",
+                data: {
+                    fullname: `${$('#fullname_register').val()}`,
+                    username: `${$('#username_register').val()}`,
+                    email: `${$('#email_register').val()}`,
+                    password: `${$('#password_register').val()}`
+                },
+                success: ((res) => {
+                    if (res.status == 200) {
+                    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thông báo',
+                            text: `${res.message}`,
+                            timer: 1000
+                        })
+                    }
+                    else{
+                    console.log(res);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Thông báo',
+                            text: `${res.message}`,
+                            timer: 1000
+                        })
+                    }
+                })
+            })
+        }
+    </script>
+</body>

@@ -1,0 +1,168 @@
+/* body */
+#body-container {
+    padding: 5%;
+}
+
+#body-container>h1 {
+    color: #DEB526;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* main header */
+.header-separator {
+    width: 40%;
+    height: 3px;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    background-color: #cdcdcd;
+}
+
+/* quyền lợi hội viên */
+.benefits {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.benefits-header {
+    margin-bottom: 25px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.benefits-detail {
+    width: 60%;
+
+    text-align: left;
+}
+
+.benefit-middle {
+    margin-left: auto;
+
+    text-align: right;
+}
+
+.benefits>div {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+}
+
+.benefit-img {
+
+    margin-inline: auto;
+
+    height: 100px;
+}
+
+.separator {
+    width: 100%;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.separator-square {
+    width: 10px;
+    height: 10px;
+
+    background-color: #DEB526;
+
+    transform: rotate(45deg);
+}
+
+.main-separator {
+    width: 80%;
+    height: 3px;
+
+    margin-inline: -5px;
+
+    background-color: #DEB526;
+}
+
+/* đăng kí ngay */
+.signup-now {
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+/* mức hội viên */
+.memberships-container {
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.membership {
+    width: 275px;
+
+    border-radius: 16px;
+
+    box-shadow: 2px 4px 4px 4px #cdcdcd;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.membership-name {
+    margin-top: 25px;
+
+    font-size: 36px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.memberships-container ul {
+    width: 70%;
+    height: 100px;
+
+    list-style: disc;
+}
+
+.membership-btn {
+    margin-bottom: 25px;
+
+    width: 200px;
+
+    padding: 10px;
+    
+    display: flex;
+    justify-content: space-between;
+
+    border: 1px solid black;
+    border-radius: 16px;
+
+    transition: 0.25s;
+}
+
+.membership-btn>span {
+    color: #000;
+
+    font-weight: 600;
+}
+
+.membership-btn:hover {
+    background-color: #DEB526;
+
+    transition: 0.25s;
+}
