@@ -114,7 +114,7 @@
             <p class="benefits-detail signup-now">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, ab consectetur officia quam eum nobis praesentium iusto maxime blanditiis ducimus exercitationem soluta distinctio quo quisquam itaque minus! Adipisci, minima fuga! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, ab consectetur officia quam eum nobis praesentium iusto maxime blanditiis ducimus exercitationem soluta distinctio quo quisquam itaque minus! Adipisci, minima fuga! </p>
 
             <div class="memberships-container">
-                <div class="membership">
+                <!-- <div class="membership">
                     <h3 class="membership-name">Jack</h3>
 
                     <div class="separator">
@@ -233,7 +233,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         
         <!-- footer -->
@@ -269,4 +269,69 @@
         </div>
         </body>
         <script src="../public/javascript/header.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    start();
+
+    function start() {
+        $.ajax({
+            url: 'http://localhost:3000/api/membership',
+            method: "GET",
+            success: (res) => {
+                if (res.status == 200) {
+                    let countMembership = res.metadata.length;
+                    let html = ""
+                    for (let i = 0; i < countMembership; i++) {
+                        html += renderMembership(res.metadata[i])
+                    }
+                    $(".memberships-container").html(html)
+                }
+            }
+        })
+    }
+
+
+    function renderMembership(data) {
+        let html = ''
+        html += `<div class="membership">
+                <h3 class="membership-name">${data.name}</h3>
+                <div class="separator">
+                    <div class="separator-square"></div>
+                    <div class="main-separator"></div>
+                    <div class="separator-square"></div>
+                </div>
+
+                <ul>
+                    <li>${data.description}</li>
+                </ul>
+
+                <div class="separator">
+                    <div class="separator-square"></div>
+                    <div class="main-separator"></div>
+                    <div class="separator-square"></div>
+                </div>
+
+                <a href="/membership_payment">
+                    <div class="membership-btn">
+                        <span>Tháng:</span>
+                        <span class="membership-price">${data.price_month}</span>
+                    </div>
+                </a>
+                <a href="/membership_payment">
+                    <div class="membership-btn">
+                        <span>Quý:</span>
+                        <span class="membership-price">${data.price_quater}</span>
+                    </div>
+                </a>
+                <a href="/membership_payment">
+                    <div class="membership-btn">
+                        <span>Năm:</span>
+                        <span class="membership-price">${data.price_year}</span>
+                    </div>
+                </a>
+            </div>`
+        return html
+    }
+</script>
 </html>
