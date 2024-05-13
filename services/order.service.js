@@ -2,6 +2,46 @@ const db = require("../dbs/initDb")
 const { BadRequestError } = require("../responseHandle/error.response");
 const moment = require("moment-timezone")
 class OrderService {
+    static async getMembershipByUserId(userId) {
+        const selectQuery = `
+                SELECT 
+                    OrderMembership.id, 
+                    OrderMembership.start_date, 
+                    OrderMembership.end_date, 
+                    OrderMembership.type, 
+                    OrderMembership.status, 
+                    User.username AS user_username, 
+                    Membership.name AS membership_name 
+                FROM 
+                    OrderMembership 
+                INNER JOIN 
+                    User 
+                ON 
+                    OrderMembership.user_id = User.id 
+                INNER JOIN 
+                    Membership 
+                ON 
+                    OrderMembership.membership_id = Membership.id
+                WHERE 
+                    OrderMembership.user_id = ${userId} AND
+                    OrderMembership.start_date <= NOW() AND
+                    OrderMembership.end_date >= NOW()
+                    AND OrderMembership.status = '0'
+                ORDER BY 
+                OrderMembership.type DESC
+                LIMIT 1;
+            `;
+        const selectResults = await new Promise((resolve, reject) => {
+            db.query(selectQuery, (selectError, results) => {
+                if (selectError) {
+                    reject(new BadRequestError(selectError.message));
+                    return;
+                }
+                resolve(results);
+            });
+        });
+        return selectResults[0];
+    }
     static getAllOrderDesk = async () => {
         const query = `
         SELECT 

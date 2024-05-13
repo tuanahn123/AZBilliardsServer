@@ -7,6 +7,12 @@ class OrderController {
             metadata: await OrderService.orderMembership(req.session.userId, req.body)
         }).send(res)
     }
+    static getMembershipByUserId = async (req, res, next) => {
+        new SuccessResponse({
+            message: 'Lấy thông tin thành công!',
+            metadata: await OrderService.getMembershipByUserId(req.session.userId)
+        }).send(res)
+    }
     static getListOrderMembership = async (req, res, next) => {
         new SuccessResponse({
             message: 'Lấy danh sách hội viên thành công!',
