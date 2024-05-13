@@ -1,10 +1,10 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+const a = document.querySelector.bind(document);
+const aa = document.querySelectorAll.bind(document);
 
-const contentMain = $(".content_main");
-const contentSub = $(".content_sub");
-const mainDescription = $(".main_description");
-const subDescription = $(".sub_description");
+const contentMain = a(".content_main");
+const contentSub = a(".content_sub");
+const mainDescription = a(".main_description");
+const subDescription = a(".sub_description");
 var type = "main";
 
 function toggleContentMain() {

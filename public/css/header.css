@@ -120,7 +120,7 @@ a {
 
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
