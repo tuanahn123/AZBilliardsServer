@@ -35,3 +35,4 @@ function toggleContentSub() {
 mainDescription.addEventListener("click", toggleContentMain);
 
 subDescription.addEventListener("click", toggleContentSub);
+

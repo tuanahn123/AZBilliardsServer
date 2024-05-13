@@ -11,7 +11,8 @@ class OrderService {
                     OrderMembership.type, 
                     OrderMembership.status, 
                     User.username AS user_username, 
-                    Membership.name AS membership_name 
+                    Membership.name AS membership_name,
+                    MembershipDetail.discount_rate 
                 FROM 
                     OrderMembership 
                 INNER JOIN 
@@ -22,6 +23,10 @@ class OrderService {
                     Membership 
                 ON 
                     OrderMembership.membership_id = Membership.id
+                INNER JOIN
+                    MembershipDetail
+                ON
+                    Membership.membership_detail_id = MembershipDetail.id
                 WHERE 
                     OrderMembership.user_id = ${userId} AND
                     OrderMembership.start_date <= NOW() AND
@@ -161,7 +166,7 @@ class OrderService {
         if (quantity_tool > 0 && tool_id != null) {
             const queryPriceTool = 'SELECT price FROM Tool WHERE id = ?';
             const resultQueryPriceTool = await new Promise((resolve, reject) => {
-                db.query(queryPriceTool, [desk_id], (checkError, results) => {
+                db.query(queryPriceTool, [tool_id], (checkError, results) => {
                     if (checkError) {
                         reject(new BadRequestError(checkError.message));
                         return;

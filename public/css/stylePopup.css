@@ -129,17 +129,11 @@ button:hover {
 .overlay .popup .image {
     margin-top: 10px;
 }
-.popup .popup_image .btn_back {
-    border: none;
-    outline: none;
-    background: transparent;
-    color: #777;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    cursor: pointer;
-}
+
+/* .popup_image {
+    width: 40%;
+} */
+
 .popup_image .image .main_image {
     width: 90%;
     height: auto;
@@ -158,6 +152,8 @@ button:hover {
 }
 .popup_info {
     padding-top: 20px;
+    width: 60%;
+    min-width: 425px;
 }
 #heading_info {
     color: #deb526;
@@ -236,8 +232,12 @@ button:hover {
 
 .popup-content {
     display: none;
+    position: relative;
+    flex-direction: row;
     width: 100%;
 }
+
+
 
 #table-menu {
     flex-direction: column;
