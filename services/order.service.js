@@ -246,7 +246,7 @@ class OrderService {
                 Membership 
             ON 
                 OrderMembership.membership_id = Membership.id
-            
+            Where OrderMembership.status = '2'
         `;
         const selectResults = await new Promise((resolve, reject) => {
             db.query(selectQuery, (selectError, results) => {

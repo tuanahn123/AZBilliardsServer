@@ -11,6 +11,97 @@ body {
 button:hover {
     opacity: 0.7;
 }
+
+/* popup background */
+#popup-background {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #55555555;
+
+    z-index: 20;
+}
+
+/* popup menu */
+.menu {
+    position: relative;
+
+    box-sizing: border-box;
+
+    width: 80vw;
+    height: 85vh;
+
+    display: flex;
+    flex-flow: row;
+
+    padding: 5%;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+/* confirm btn */
+#confirm-btn {
+    display: inline-block;
+
+    width: fit-content;
+
+    padding: 2%;
+    padding-inline: 5%;
+
+    margin-top: auto;
+    margin-inline: auto;
+
+    border-radius: 6px;
+
+    background-color: #DEB526;
+
+    box-shadow: 3px 4px 10px 3px rgba(0, 0, 0, 0.25);
+
+    font-size: 26px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+#confirm-btn:hover {
+    background-color: #af8d13;
+}
+
+/* close btn */
+#close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    font-size: 26px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+#close-btn:hover {
+    opacity: 50%;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -68,13 +159,13 @@ button:hover {
 .popup_info {
     padding-top: 20px;
 }
-.popup .popup_info .heading_info {
+#heading_info {
     color: #deb526;
     font-size: 25px;
     font-weight: 700;
     width: 90%;
 }
-.popup_info .price_info {
+.popup_info #price_info {
     color: #de5d26;
     font-size: 20px;
     font-weight: 600;
@@ -102,8 +193,8 @@ button:hover {
     border: 1px solid #000;
     border-radius: 5px;
 }
-.popup_info .select_quantity .minus_btn,
-.popup_info .select_quantity .plus_btn {
+#minus_btn,
+#plus_btn {
     border: none;
     outline: none;
     background: #f9f5f5;
@@ -114,13 +205,13 @@ button:hover {
     padding: 5px 10px;
     cursor: pointer;
 }
-.popup_info .select_quantity .minus_btn {
+#minus_btn {
     border-right: 1px solid #000;
 }
-.popup_info .select_quantity .plus_btn {
+#plus_btn {
     border-left: 1px solid #000;
 }
-.popup_info .select_quantity .quantity {
+#cue-quantity {
     color: #000;
     font-size: 18px;
     font-style: normal;
@@ -129,7 +220,7 @@ button:hover {
     display: inline-block;
     padding: 5px 10px;
 }
-.popup_info .select_and_rent .call_rent {
+#rent-table-with-tools {
     border: none;
     outline: none;
     padding: 10px 20px;
@@ -141,4 +232,61 @@ button:hover {
     font-weight: 600;
     background-color: #deb526;
     cursor: pointer;
+}
+
+.popup-content {
+    display: none;
+    width: 100%;
+}
+
+#table-menu {
+    flex-direction: column;
+}
+
+#table-menu h2 {
+    margin-bottom: 5%;
+
+    font-size: 36px;
+    font-weight: 600;
+    color: #DEB526;
+    text-align: center;
+}
+
+#table-menu img {
+    width: 100%;
+}
+
+.table-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-container {
+    margin-left: 10%;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#call-rent {
+    width: fit-content;
+
+    margin-inline: auto;
+    margin-top: 5%;
+    padding: 15px 50px;
+
+    background-color: #DEB526;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 26px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.info-container div {
+    margin: 10px 0;
 }

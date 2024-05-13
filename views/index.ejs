@@ -42,31 +42,15 @@
             <a id="header-logo" href="/"><img src="../image/logo.png"  alt=""></a>
 
 
-            <!-- search -->
             <div id="header-utility">
-                        <a href="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="190 5 50 50" fill="none">
-                                <path d="M214.333 39.6667C221.697 39.6667 227.667 33.6971 227.667 26.3333C227.667 18.9695 221.697 13 214.333 13C206.97 13 201 18.9695 201 26.3333C201 33.6971 206.97 39.6667 214.333 39.6667Z" stroke="#DEB526" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M231 43L223.75 35.75" stroke="#DEB526" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-
-                <div class="header-utility-separator"></div>
 
                 <a href="/signin_login">
-                    <svg width='30' height='30'>
-                        <circle cx='15' cy='10' r='7' stroke='' stroke-width='0' fill='#DEB526' />
+                    <svg width='25' height='25'>
+                        <circle cx='15' cy='10' r='5' stroke='' stroke-width='0' fill='#DEB526' />
                         <ellipse cx='15' cy='30' rx='15' ry='10' fill='#DEB526' stroke='' stroke-width='0' />
                      </svg>
                 </a>
 
-                <div class="header-utility-separator"></div>
-
-                <a href="">
-                    <svg id="heart-svg" width="30" height="30" viewBox="15 15 30 30" xmlns="http://www.w3.org/2000/svg">
-                          <path id="heart" d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" fill="#DEB526"/>
-                      </svg>
-                </a>
             </div>
         </div>
     </div>
@@ -150,7 +134,7 @@
                     </div>
                 </div>
                 <div class="tables out-of-tables">
-                    <a href="../DatBan/orderTable.html">
+                    <a href="/orderTable">
                         <div class="table-img">
                             <img src="../image/table_img.png" alt="">
                             <div class="table-state">
@@ -166,7 +150,7 @@
                     </div>
                 </div>
                 <div class="tables discounted">
-                    <a href="../DatBan/orderTable.html">
+                    <a href="/orderTable">
                         <div class="table-img">
                             <img src="../image/table_img.png" alt="">
                             <div class="table-state">
@@ -182,7 +166,7 @@
                     </div>
                 </div>
                 <div class="tables out-of-tables">
-                    <a href="../DatBan/orderTable.html">
+                    <a href="/orderTable">
                         <div class="table-img">
                             <img src="../image/table_img.png" alt="">
                             <div class="table-state">
@@ -198,7 +182,7 @@
                     </div>
                 </div>
                 <div class="tables out-of-tables">
-                    <a href="../DatBan/orderTable.html">
+                    <a href="/orderTable">
                         <div class="table-img">
                             <img src="../image/table_img.png" alt="">
                             <div class="table-state">
@@ -214,7 +198,7 @@
                     </div>
                 </div>
                 <div class="tables">
-                    <a href="../DatBan/orderTable.html">
+                    <a href="/orderTable">
                         <div class="table-img">
                             <img src="../image/table_img.png" alt="">
                             <div class="table-state">
@@ -269,7 +253,7 @@
 
     <!-- footer -->
     <div id="footer">
-        <a href="../TrangChu/index.html"><img src="../image/logo.png" alt="" id="footer-logo"></a>
+        <a href="/"><img src="../image/logo.png" alt="" id="footer-logo"></a>
         <div class="footer-section" >
 
             <span class="footer-heading"">LIÊN HỆ</span>
@@ -302,4 +286,27 @@
 </body>
 <script src="../javascript/home.js"></script>
 <script src="../javascript/header.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    start();
+
+    function start() {
+        $.ajax({
+            url: 'http://localhost:3000/api/desk',
+            method: "GET",
+            success: (res) => {
+                if (res.status == 200) {
+                    console.log(res.metadata)
+                    // let countMembership = res.metadata.length;
+                    // let html = ""
+                    // for (let i = 0; i < countMembership; i++) {
+                    //     html += renderMembership(res.metadata[i])
+                    // }
+                    // $(".memberships-container").html(html)
+                }
+            }
+        })
+    }
+</script>
 </html>

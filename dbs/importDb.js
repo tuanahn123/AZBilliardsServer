@@ -18,4 +18,4 @@ async function createAdmin() {
     });
     console.log("Import User Successfully!!!")
 }
-// createAdmin()
+createAdmin();

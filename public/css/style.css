@@ -301,7 +301,7 @@ a {
 .active.combo {
     color: #deb526;
 }
-.info_order .order_table .rent_tool {
+.info_order .order_table #rent_tool {
     padding: 10px 15px;
     color: #fff;
     text-align: center;
@@ -312,8 +312,14 @@ a {
     border: none;
     outline: none;
     border-radius: 10px;
+
+    cursor: pointer;
 }
-.info_order .order_table .order {
+#rent_tool:hover {
+    opacity: 75%;
+}
+
+#rent-table-no-tools {
     padding: 10px 15px;
     color: #fff;
     text-align: center;
