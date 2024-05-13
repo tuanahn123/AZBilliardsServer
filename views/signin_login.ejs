@@ -57,6 +57,15 @@
                             }
                         })
                     }
+                    else{
+                    console.log(res);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Thông báo',
+                            text: `${res.message}`,
+                            timer: 3000
+                        })
+                    }
                 })
             })
         }
