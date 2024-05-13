@@ -189,7 +189,7 @@ class OrderService {
         const ObjectTypeOfPrice = {
             0: "price_month",
             1: "price_quater",
-            1: "price_year",
+            2: "price_year",
         }
         // Thực hiện truy vấn SELECT giá quý từ bảng Membership
         const selectQuery = `SELECT ${ObjectTypeOfPrice[type]} FROM Membership WHERE id = ?`;
