@@ -217,8 +217,8 @@ class OrderService {
             case '1': // Gói quý
                 end_date = currentDate.clone().add(3, 'month').format('YYYY-MM-DD HH:mm:ss');
                 break;
-            case '2': // Gói ngày
-                end_date = currentDate.clone().add(1, 'day').format('YYYY-MM-DD HH:mm:ss');
+            case '2': // Gói năm
+                end_date = currentDate.clone().add(1, 'year').format('YYYY-MM-DD HH:mm:ss');
                 break;
             default:
                 throw new BadRequestError('Gói hội viên không hợp lệ');
